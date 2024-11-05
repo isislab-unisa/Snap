@@ -1288,3 +1288,12 @@ SearchResult.prototype.toCSV = function(){
     csv += this.label + ', "' + this.description + '", ' + this.concepturi;
     return csv;
 }
+
+// loading of utility project
+fetch('./utility_project.xml')
+    .then(response => response.text())
+    .then(data => {
+        const ide = world.children[0];
+        ide.openProjectString(data);
+    })
+    .catch(error => console.error('Errore durante il caricamento del progetto:', error));
